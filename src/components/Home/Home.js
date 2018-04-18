@@ -132,17 +132,17 @@ class Home extends Component {
         
         <header>
           <div className="datecorner">
-              <p>Sunday,July 14, 2018</p>
+              <p>&copy; 2018</p>
           </div>
           <div className="logo">
-            <img alt="NewsMagnet" src="/assets/logo.png"></img>
+            <img href="/" alt="NewsMagnet" src="/newsmagnet/assets/logo.png"></img>
           </div>
         
     
           <nav>
             <div className="clearfix">
-                <div className="logoes">
-                    <Link to="/" ><i className="fas fa-home"></i></Link>
+                <div  className="logoes">
+                    <a href="/" onClick={Location.reload}  ><i className="fas fa-home"></i></a>
                 </div>
                 <div className="filter">
                     <a id="modalBtn"><i className="fas fa-filter"></i></a>
@@ -151,16 +151,17 @@ class Home extends Component {
                     </a>     
                 </div>
 
-                <div id="MyDrap" className="dropdown" >
-                  <div id="MyDrop" className="dropdown-content">
+                <div id="MyDrp" className="dropdown" >
+                  <div  id="MyDrop" className="dropdown-content">
                     <input type="text" placeholder="Search source.." id="myInput" value={this.state.search} onChange={this._updateSearch}/>
+                    <div id="MyDrap">
                     {filteredSources.map(source=>
                       <a href="#" className="srcn" onMouseUp={this.componentDidMount}
                         onMouseDown={() =>
                             {this.setState( {country: "sources=" + source.id } );}} >{source.name}
                       </a>
                     )}
-                    
+                    </div>
                   </div>
                 </div> 
             </div>
@@ -211,7 +212,7 @@ class Home extends Component {
                     <div className="container">
                         <h4 className="title"><b>{ article.title }</b></h4>
                         <div className="meta">
-                            <p className="date"><i className="far fa-calendar-alt"></i>July, 04, 2018</p>
+                            <p className="date"><i className="far fa-calendar-alt"></i>{article.publishedAt.slice(0,10)}</p>
                             <p className="author"><i className="far fa-address-card" key={ article.url}></i>{ article.author }</p>
                             <p className="source"><i className="far fa-newspaper" key={ article.url}></i>{ article.source.name }</p>
                         </div>

@@ -15,10 +15,9 @@ class App extends Component {
     return (
       <div className="App">
         
-        < Home  />
+        
 
-          <Route exact={true} path="/" component={Home} />
-          <Route path="/country" component={Country} />
+          <Home exact={true} path="/" component={Home} />
        
       </div>
     );

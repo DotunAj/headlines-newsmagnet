@@ -9,7 +9,7 @@
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/assets/logo.png">
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -20,7 +20,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>News Magnet</title>
   </head>
   <body>
     <div id="page">
@@ -43,19 +43,19 @@
   <script>
     if('serviceWorker' in navigator){
 
-      navigator.serviceWorker.register('/js/sw.js').then(function(registration){
+      navigator.serviceWorker.register('/sw.js').then(function(registration){
         console.log("Registration Worked!");
-      }).catch(function(err){
-        console.log("You messed up!", error)
+      }).catch(function(){
+        console.log("You messed up!");
       });
-    }
+    };
   </script>
   <script>
     // Get the modal
     var modal = document.getElementById('MyModal');
     
-
-    var drop = document.getElementById("MyDrop");
+    //  Get the Dropdown
+    var drop = document.getElementById("MyDrap");
 
     // Get the button that opens the modal
     var btn = document.getElementById("modalBtn");
@@ -65,13 +65,17 @@
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close");
 
-    var srcn = document.getElementsByClassName("srcn");
     
-    //When the user clicks the button, open the modal 
+     
     dbtn.onclick = function() {
-      document.getElementById("MyDrop").classList.toggle("show");
+     document.getElementById("MyDrop").classList.toggle("show");
     }
 
+    drop.onclick = function() {
+      document.getElementById("MyDrop").classList.remove("show");
+    }
+
+    //When the user clicks the button, open the modal
     btn.onclick = function() {
       modal.style.display = "block";
     }
@@ -83,12 +87,6 @@
     }
     }
 
-    for (var j = 0; j < span.length; j++) {
-      srcn[j].onclick = function() {
-        document.getElementById("MyDrop").classList.toggle("show");
-          
-    }
-    }
 
     // When the user clicks on <span> (x), close the modal
     //span.onclick = function() {
@@ -96,16 +94,12 @@
     //}
     
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == drop) {
-            drop.style.display = "none";
-        }
-    }
 
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
+
     </script>
 </html>
